@@ -1,0 +1,62 @@
+---
+import Logo from "../components/ui/Logo/Logo.astro";
+import BaseHead from "../components/ui/Head/BaseHead.astro";
+import type { Props as BaseHeadProps } from "../components/ui/Head/BaseHead.astro";
+import "../styles/tailwind.css";
+
+export interface Props {
+  meta?: BaseHeadProps;
+}
+
+const { meta } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead {...meta} />
+  </head>
+  <body class="bg-white leading-6">
+    <div
+      class="flex h-screen flex-col justify-between bg-gray-50 lg:block lg:h-auto"
+    >
+      <section>
+        <header class="border-b p-4">
+          <div
+            class="mx-auto flex w-full flex-row items-center justify-center sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]"
+          >
+            <a href="/" class="block text-neutral-900">
+              <Logo class="w-5 h-5 fill-current"/>
+            </a>
+          </div>
+        </header>
+        <div class="bg-gray-50 lg:min-h-[1024px]">
+          <div
+            class="mx-auto grid w-full min-w-full grid-cols-12 sm:max-w-[640px] md:max-w-[768px] lg:min-w-0 lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]"
+          >
+            <div class="col-span-12 grid grid-cols-12 px-10 py-10 md:p-20">
+              {/* form */}
+              <slot />
+              {/* form */}
+              {/* content */}
+              <div
+                class="hidden p-5 text-gray-900 md:col-[1/-1] md:block lg:col-span-6 lg:mt-16 lg:block"
+              >
+                <div class="mx-auto w-2/3">
+                  <section>
+                    <p class="mb-5 text-lg text-gray-700">
+                      "It's amazing to see how fast devs go from 0 to Blog under
+                      a domain they own on Hashnode 🤯. It reminds me a lot of
+                      what Substack did for journalists."
+                    </p>
+                  </section>
+                </div>
+              </div>
+              {/* content */}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

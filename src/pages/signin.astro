@@ -1,0 +1,8 @@
+---
+import LoginForm from "../components/auth/LoginForm";
+import Layout from "../layouts/Auth.astro";
+---
+
+<Layout meta={{ title: "signin" }}>
+  <LoginForm client:visible />
+</Layout>
